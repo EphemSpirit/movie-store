@@ -7,5 +7,6 @@ FactoryBot.define do
     description { "This is a test summary" }
     genre { "Adventure" }
     release_date { Date.new(2001, 2, 3).strftime('%a, %d %b %Y') }
+    director factory: :director
   end
 end

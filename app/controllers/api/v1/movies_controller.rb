@@ -3,7 +3,7 @@ class Api::V1::MoviesController < ApplicationController
 
   def index
     movies = Movie.all
-    render json: movies
+    render json: movies, serialzier: MovieSerializer
   end
 
   def new
@@ -12,7 +12,7 @@ class Api::V1::MoviesController < ApplicationController
   def create
     @movie = Movie.create(movie_params)
     if @movie.save
-      render json: @movie, status: :ok, message: "Success"
+      render json: @movie, status: :ok, message: "Success", serializer: MovieSerializer
     else
       render json: @movie.errors, status: :unprocessable_entity
     end
@@ -38,6 +38,11 @@ class Api::V1::MoviesController < ApplicationController
     redirect_to api_v1_movies_path
   end
 
+  def top_movies
+    @top_movies = Movie.all.order(rating: :desc).limit(10)
+    render json: @top_movies
+  end
+
   private
 
     def find_movie
@@ -45,6 +50,6 @@ class Api::V1::MoviesController < ApplicationController
     end
 
     def movie_params
-      params.require(:movie).permit(:title, :rating, :description, :genre, :release_date)
+      params.require(:movie).permit(:title, :rating, :description, :genre, :release_date, :director)
     end
 end
