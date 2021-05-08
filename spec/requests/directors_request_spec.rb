@@ -42,4 +42,13 @@ RSpec.describe "Director", type: :request do
       expect(response).to have_http_status(204)
     end
   end
+
+  describe 'GET /directors/top_directors' do
+    it "gets the 5 most prolific directors" do
+      directors = create_list(:director, 10)
+      get "/api/v1/top_directors"
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(5)
+    end
+  end
 end

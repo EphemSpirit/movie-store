@@ -27,6 +27,11 @@ class Api::V1::DirectorsController < ApplicationController
     @director.destroy
   end
 
+  def top_directors
+    @top_directors = Director.all.sort_by{ |x| x.movies.count }.reverse.slice(0, 5)
+    render json: @top_directors, status: :ok, message: "Most Prolific Directors"
+  end
+
   private
 
     def find_director
