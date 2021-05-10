@@ -50,6 +50,6 @@ class Api::V1::MoviesController < ApplicationController
     end
 
     def movie_params
-      params.require(:movie).permit(:title, :rating, :description, :genre, :release_date, :director_id)
+      params.require(:movie).permit(:title, :rating, :description, :genre, :release_date, :director_id, cast_member_ids: [])
     end
 end

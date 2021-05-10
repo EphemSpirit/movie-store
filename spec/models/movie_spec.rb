@@ -4,6 +4,7 @@ RSpec.describe Movie, type: :model do
 
 
   let(:movie) { create(:movie) }
+  let(:casted) { create(:movie, :with_cast) }
 
   context "validations" do
 
@@ -16,4 +17,12 @@ RSpec.describe Movie, type: :model do
       expect(movie).to be_valid
     end
   end
+
+  context "cast members" do
+
+    it "has a cast" do
+      expect(casted.cast_members.length).to eq(1)
+    end
+  end
+  
 end
