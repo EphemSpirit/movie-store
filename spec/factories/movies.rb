@@ -2,7 +2,7 @@ require 'date'
 
 FactoryBot.define do
   factory :movie do
-    title { "Test movie" }
+    name { "Test movie" }
     rating { 3.34 }
     description { "This is a test summary" }
     genre { "Adventure" }

@@ -1,10 +1,10 @@
 class Movie < ApplicationRecord
-  validates :title, :description, :rating, :genre, :release_date, presence: true
+  validates :name, :description, :rating, :genre, :release_date, presence: true
 
   belongs_to :director, foreign_key: :director_id
   has_many :castings
   has_many :cast_members, through: :castings
 
   scope :best_films, -> { Movie.where("rating > ?", 9.0)
-                               .order(rating: :desc) }                               
+                               .order(rating: :desc) }
 end

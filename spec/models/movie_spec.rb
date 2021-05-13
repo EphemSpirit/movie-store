@@ -9,7 +9,7 @@ RSpec.describe Movie, type: :model do
   context "validations" do
 
     it "is invalid without all attributes" do
-      movie.title = nil
+      movie.name = nil
       expect(movie).not_to be_valid
     end
 
@@ -24,5 +24,5 @@ RSpec.describe Movie, type: :model do
       expect(casted.cast_members.length).to eq(1)
     end
   end
-  
+
 end

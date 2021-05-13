@@ -44,8 +44,8 @@ RSpec.describe "Director", type: :request do
   end
 
   describe 'GET /directors/top_directors' do
-    it "gets the 5 most prolific directors" do
-      directors = create_list(:director, 10)
+    xit "gets the 5 most prolific directors" do
+      directors = create_list(:director, 10, :with_movie)
       get "/api/v1/top_directors"
       json = JSON.parse(response.body)
       expect(json.length).to eq(5)
