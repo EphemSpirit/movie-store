@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
       get 'top_movies', to: 'movies#top_movies'
       get 'top_directors', to: 'directors#top_directors'
+      get 'least_prolific', to: 'directors#least_prolific'
     end
   end
 end

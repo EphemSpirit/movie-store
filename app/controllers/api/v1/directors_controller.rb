@@ -15,7 +15,7 @@ class Api::V1::DirectorsController < ApplicationController
     if @director.save
       render json: @director, status: :ok, message: "Success"
     else
-      render json: @director.errors, status: :unprcoessable_entity
+      render json: @director.errors, status: :unprocessable_entity
     end
   end
 
@@ -28,8 +28,13 @@ class Api::V1::DirectorsController < ApplicationController
   end
 
   def top_directors
-    @top_directors = Director.all.sort_by{ |x| x.movies.count }.reverse.slice(0, 5)
+    @top_directors = Director.select{ |x| x.average_rating > 0.750e1 }
     render json: @top_directors, status: :ok, message: "Most Prolific Directors"
+  end
+
+  def least_prolific
+    people = Director.all.sort_by{ |x| x.movies.count }.slice(0, 5)
+    render json: people, status: :ok, message: "Least Prolific directors"
   end
 
   private
