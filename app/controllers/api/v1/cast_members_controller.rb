@@ -10,7 +10,7 @@ class Api::V1::CastMembersController < ApplicationController
   end
 
   def create
-    @cast_member = CastMember.create(cast_member_params)
+    @cast_member = CastMember.new(cast_member_params)
     if @cast_member.save
       render json: @cast_member, status: :ok, message: "Cast Member Added!"
     else

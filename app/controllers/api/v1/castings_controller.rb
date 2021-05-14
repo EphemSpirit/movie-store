@@ -4,7 +4,7 @@ class Api::V1::CastingsController < ApplicationController
   end
 
   def create
-    @casting = Casting.create(casting_params)
+    @casting = Casting.new(casting_params)
     if @casting.save
       render json: @casting, status: :ok, message: "Part Successfully Cast!"
     else

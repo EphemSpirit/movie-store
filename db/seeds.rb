@@ -1,6 +1,7 @@
 Movie.destroy_all
 Director.destroy_all
 CastMember.destroy_all
+Casting.destroy_all
 
 50.times do
   CastMember.create!(name: Faker::Name.name,
@@ -15,7 +16,7 @@ end
 end
 
 100.times do
-  movie = Movie.create!(title: Faker::Movie.title,
+  movie = Movie.create!(name: Faker::Movie.title,
                 description: Faker::Lorem.paragraph(sentence_count: 5),
                 rating: Faker::Number.decimal(l_digits: 1),
                 genre: Faker::Book.genre,

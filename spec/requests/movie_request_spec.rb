@@ -21,7 +21,7 @@ RSpec.describe "Movies", type: :request do
 
     let(:director) { create(:director) }
 
-    xit "creates a new movie" do
+    it "creates a new movie" do
 
       params = { name: "New Movie",
                  rating: 9.12,

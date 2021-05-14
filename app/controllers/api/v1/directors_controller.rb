@@ -10,7 +10,7 @@ class Api::V1::DirectorsController < ApplicationController
   end
 
   def create
-    @director = Director.create(director_params)
+    @director = Director.new(director_params)
 
     if @director.save
       render json: @director, status: :ok, message: "Success"
@@ -28,7 +28,7 @@ class Api::V1::DirectorsController < ApplicationController
   end
 
   def top_directors
-    @top_directors = Director.select{ |x| x.average_rating > 0.750e1 }
+    @top_directors = Director.all.select{ |x| x.average_rating > 0.750e1 }
     render json: @top_directors, status: :ok, message: "Most Prolific Directors"
   end
 
@@ -44,6 +44,6 @@ class Api::V1::DirectorsController < ApplicationController
     end
 
     def director_params
-      params.require(:director).permit(:name, :years_active)
+      params.require(:director).permit(:name, :years_active, movie_ids: [])
     end
 end

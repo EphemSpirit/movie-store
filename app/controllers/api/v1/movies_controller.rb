@@ -10,7 +10,7 @@ class Api::V1::MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.create(movie_params)
+    @movie = Movie.new(movie_params)
     if @movie.save
       render json: @movie, status: :ok, message: "Success", serializer: MovieSerializer
     else
@@ -50,6 +50,6 @@ class Api::V1::MoviesController < ApplicationController
     end
 
     def movie_params
-      params.require(:movie).permit(:title, :rating, :description, :genre, :release_date, :director_id, cast_member_ids: [])
+      params.require(:movie).permit(:name, :rating, :description, :genre, :release_date, :director_id, cast_member_ids: [])
     end
 end

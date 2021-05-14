@@ -4,7 +4,7 @@ FactoryBot.define do
     years_active { 3 }
     trait :with_movie do
       after(:create) do |director|
-        director.movies << create(:movie)
+        director.movie_ids << create(:movie).id
       end
     end
   end
