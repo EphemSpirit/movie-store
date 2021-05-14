@@ -2,7 +2,7 @@ class Api::V1::DirectorsController < ApplicationController
   before_action :find_director, only: %i[show destroy]
 
   def index
-    @directors = Director.all
+    @directors = Director.all.includes(:movies)
     render json: @directors
   end
 

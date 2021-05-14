@@ -2,7 +2,7 @@ class Api::V1::CastMembersController < ApplicationController
   before_action :find_cast_member, only: %i[show edit update destroy]
 
   def index
-    @cast_members = CastMember.all
+    @cast_members = CastMember.all.includes(:movies)
     render json: @cast_members, status: :ok, message: "All Cast Members"
   end
 

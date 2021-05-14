@@ -2,7 +2,7 @@ class Api::V1::MoviesController < ApplicationController
   before_action :find_movie, only: %i[show edit update destroy]
 
   def index
-    movies = Movie.all
+    movies = Movie.all.includes(:director, :cast_members)
     render json: movies, serialzier: MovieSerializer
   end
 
