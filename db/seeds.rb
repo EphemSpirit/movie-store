@@ -2,6 +2,7 @@ Movie.destroy_all
 Director.destroy_all
 CastMember.destroy_all
 Casting.destroy_all
+User.destroy_all
 
 50.times do
   CastMember.create!(name: Faker::Name.name,
@@ -27,4 +28,12 @@ end
 100.times do
   Casting.create!(cast_member_id: CastMember.all.map(&:id).sample,
                   movie_id: Movie.all.map(&:id).sample)
+end
+
+100.times do |i|
+  User.create!(email: "email_#{i}@example.com",
+               name: Faker::Name.name,
+               username: Faker::TvShows::NewGirl.character.gsub(" ", ""),
+               password: "password",
+               password_confirmation: "password")
 end
