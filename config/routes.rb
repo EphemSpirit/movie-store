@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       devise_for :users
-      resources :movies
+      #for the love of god clean this up
+      resources :movies do
+        resources :comments, module: :movies do
+          resources :comments, module: :comments
+        end
+      end
       resources :directors, except: %i[edit update]
       resources :cast_members
       resources :castings, only: %i[new create destroy]
