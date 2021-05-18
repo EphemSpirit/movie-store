@@ -4,6 +4,7 @@ class Movie < ApplicationRecord
   belongs_to :director, foreign_key: :director_id
   has_many :castings
   has_many :cast_members, through: :castings
+  has_many :comments, as: :commentable
 
   scope :best_films, -> { Movie.where("rating > ?", 9.0)
                                .order(rating: :desc) }
