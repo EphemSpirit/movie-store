@@ -4,11 +4,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       devise_for :users
       #for the love of god clean this up
-      
+
       resources :movies do
-        resources :comments, module: :movies
+        resources :comments, module: :movies, only: %i[index create destroy]
       end
-      resources :comments, module: :comments
+      resources :comments, module: :comments, only: %i[index create destroy]
 
       resources :directors, except: %i[edit update]
       resources :cast_members
