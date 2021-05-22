@@ -3,6 +3,7 @@ Director.destroy_all
 CastMember.destroy_all
 Casting.destroy_all
 User.destroy_all
+Comment.destroy_all
 
 50.times do
   CastMember.create!(name: Faker::Name.name,
@@ -36,4 +37,16 @@ end
                username: Faker::TvShows::NewGirl.character.gsub(" ", ""),
                password: "password",
                password_confirmation: "password")
+end
+
+50.times do
+  movie = Movie.all.sample
+  user = User.all.sample
+  movie.comments.create!(body: Faker::TvShows::DumbAndDumber.quote, user_id: user.id)
+end
+
+50.times do
+  comment = Comment.all.sample
+  user = User.all.sample
+  comment.comments.create(body: Faker::TvShows::AquaTeenHungerForce.quote, user_id: user.id)
 end

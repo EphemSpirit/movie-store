@@ -6,11 +6,11 @@ RSpec.describe "Search", type: :request do
     let!(:director) { create(:director, :with_movie) }
 
     it "returns correct results" do
-      params = { term: "im", filter: "Director" }
+      params = { term: "estertes", filter: "Director" }
       get "/api/v1/search", { params: { search: params } }
       json = JSON.parse(response.body)
       expect(json.length).to eq(2) #1 element is the director, other is their movies
-      expect(json[0]['name']).to eq("Jim")
+      expect(json[0]['name']).to eq("Jimtestertest")
     end
 
     it "throws an error if no term is given" do

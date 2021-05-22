@@ -7,13 +7,14 @@ RSpec.describe "Movies", type: :request do
   describe "GET /api/v1/movies" do
 
     it "gets all the movies" do
+
       create_list(:movie, 20)
 
       get '/api/v1/movies'
 
       json = JSON.parse(response.body)
 
-      expect(json.length).to eq(20)
+      expect(json.length).to eq(30)
     end
   end
 

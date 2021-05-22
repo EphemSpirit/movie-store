@@ -8,7 +8,7 @@ RSpec.describe "Director", type: :request do
       get "/api/v1/directors"
       json = JSON.parse(response.body)
 
-      expect(json.length).to eq(20)
+      expect(json.length).to eq(30)
     end
   end
 

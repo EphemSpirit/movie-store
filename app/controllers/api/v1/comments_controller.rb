@@ -1,9 +1,9 @@
 class Api::V1::CommentsController < ApplicationController
-  before_action :authenticate_request
-  before_action :authenticate_user!
+  before_action :authorize_request, except: :index
+  before_action :authenticate_api_v1_user!
 
   def index
-    @comments = Comment.all.includes(:user, :movie)
+    @comments = Comment.all.includes(:user)
     render json: @comments, status: :ok
   end
 
@@ -13,8 +13,14 @@ class Api::V1::CommentsController < ApplicationController
     render json: @comment, status: :ok, message: "Comment Posted!"
   end
 
+  def show
+    @comment = Comment.find(params[:id])
+    render json: @comment, status: :ok
+  end
+
   def destroy
-    @commentable.destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
   end
 
   private

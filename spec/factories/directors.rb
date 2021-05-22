@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :director do
-    name { "Jim" }
+    name { "Jimtestertest" }
     years_active { 3 }
     trait :with_movie do
       after(:create) do |director|
