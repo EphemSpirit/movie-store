@@ -5,6 +5,7 @@ class Movie < ApplicationRecord
   has_many :castings
   has_many :cast_members, through: :castings
   has_many :comments, as: :commentable
+  has_many :likes, as: :likable
 
   scope :best_films, -> { Movie.where("rating > ?", 9.0)
                                .order(rating: :desc) }
