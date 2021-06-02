@@ -1,6 +1,6 @@
 class Api::V1::CommentsController < ApplicationController
   before_action :authorize_request, except: :index
-  before_action :authenticate_api_v1_user!
+  #before_action :authenticate_api_v1_user!
 
   def index
     @comments = Comment.all.includes(:user)
@@ -21,6 +21,7 @@ class Api::V1::CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
+    render json: { message: "Comment deleted", status: :no_content }
   end
 
   private

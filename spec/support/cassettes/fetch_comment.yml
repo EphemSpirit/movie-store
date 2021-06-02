@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://dev-cvgmoz5o.us.auth0.com/.well-known/jwks.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - dev-cvgmoz5o.us.auth0.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 28 May 2021 22:53:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 656b0e8ee9f73b69-BOS
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - public, max-age=15, stale-while-revalidate=15, stale-if-error=86400
+      Etag:
+      - W/"bf4-HhCnwy1BW8POsJfApLkYp28AYec"
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Accept-Encoding, Origin, Accept-Encoding
+      Cf-Cache-Status:
+      - REVALIDATED
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Expose-Headers:
+      - X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset
+      Cf-Request-Id:
+      - 0a56c76d5600003b6950175000000001
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ot-Baggage-Auth0-Request-Id:
+      - 6562d0700e46ff7c
+      Ot-Tracer-Sampled:
+      - 'true'
+      Ot-Tracer-Spanid:
+      - 45e391b66a7772d0
+      Ot-Tracer-Traceid:
+      - 267c373747ed8d57
+      X-Auth0-Requestid:
+      - 0a64b2146c0c1c2b77dd
+      X-Content-Type-Options:
+      - nosniff
+      X-Ratelimit-Limit:
+      - '20'
+      X-Ratelimit-Remaining:
+      - '19'
+      X-Ratelimit-Reset:
+      - '1622155953'
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3-27=":443"; ma=86400, h3-28=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"keys":[{"alg":"RS256","kty":"RSA","use":"sig","n":"r_K0QRHjPNLlia51om6ViLO0DZovcggtF5K4_ttvZRz14o14xw6HtdNoLz7aSUQzcIK-Vs1Wnd_TLBlCtEs_4Y_YyV4yMcS8H6Joh--GTQId5CFkMGSNkh6zHnebxXUq13Mfir5QoJl-d8eXg3DpIHznFNa-schSP3q4D4qIr8NGVy4de1WUEyMtnGkzSfzsQPeQUZfe3XaC6tN45mWqK-FmEPwYQkq63O8IsFl9yDnx94Ir-_b-525c1L2dpoVURIeyrgOMtXTSQgIvhJJx01rzbu_UBDCPTeS-PYrdCRz0papd41BYgiU8Uh1G_-eD_qabHbs2fjrGf0-PBuUuqQ","e":"AQAB","kid":"ykktWdQSAaaUijEDVEJUL","x5t":"NsLh4wUU2-34hH5YLCemc5yax5I","x5c":["MIIDDTCCAfWgAwIBAgIJPX3i1wAYLYhaMA0GCSqGSIb3DQEBCwUAMCQxIjAgBgNVBAMTGWRldi1jdmdtb3o1by51cy5hdXRoMC5jb20wHhcNMjEwNTE2MTkyODEwWhcNMzUwMTIzMTkyODEwWjAkMSIwIAYDVQQDExlkZXYtY3ZnbW96NW8udXMuYXV0aDAuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr/K0QRHjPNLlia51om6ViLO0DZovcggtF5K4/ttvZRz14o14xw6HtdNoLz7aSUQzcIK+Vs1Wnd/TLBlCtEs/4Y/YyV4yMcS8H6Joh++GTQId5CFkMGSNkh6zHnebxXUq13Mfir5QoJl+d8eXg3DpIHznFNa+schSP3q4D4qIr8NGVy4de1WUEyMtnGkzSfzsQPeQUZfe3XaC6tN45mWqK+FmEPwYQkq63O8IsFl9yDnx94Ir+/b+525c1L2dpoVURIeyrgOMtXTSQgIvhJJx01rzbu/UBDCPTeS+PYrdCRz0papd41BYgiU8Uh1G/+eD/qabHbs2fjrGf0+PBuUuqQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBQ4EMkhnEUwIQmnFuvNIgrZYG7ZCDAOBgNVHQ8BAf8EBAMCAoQwDQYJKoZIhvcNAQELBQADggEBAJLeKnpUEiHU58zSzNuUFJs7vVsRyHKt2BD0iR3XPIzYgHoiYmjKoYJFtGVr2W8RS8letLrDyYNPIl102X/zj/ATf5ld81BO5Dyky6cXjKzOviF3mpCHVs4LJP2/veKJdikpXA1rVepsAX5TG/MGo9U/cgBYFxsMC49djZXiErVs3U3yNgE4iBQ0A126rPtJnp7siOS0VvM03oZ6l7BOyQjkB74CSM0QahioRGdUsF+s4EtrgslBxKuHwId8S+SmRoChcCtR5FANOsuMGfWjYHuru8QgmFely0DNMaVGrH4gpI1sF+gQuh2V5QkVsy2DGmabqRSuo1/hW+4T+mLyIiY="]},{"alg":"RS256","kty":"RSA","use":"sig","n":"pfB4y4mNn9juKq16-HkViBXKSPi4ewQRkL0EJe7fCCmkCxiJa0cedU-HUYVUIOxMRNzAuzQASj4CAFhceX6Az9AYOlUtBzw5OQlzQr-Mn1HMygQNxMnykVfd5wWNzyrCUmhqaWmUWcsEXC4Xb03NZsh0wajIJAhbw9cXhRlFTaMa6y0cgqNXa_-YoefMi0c3QHiMuNDx6gbKk3oJYGmMbHBZAAMxJ8FdPD6ZsfmLbX-niOFWHs5SP6bKQcVDSigOZJV4n_CU5lP9FEQh4XULJ6M8K_m44Va3Llal6X4b8Gjkaa081jvBxZCG_FM3qS8kgHupd9-grZhHrBGmLiwmlQ","e":"AQAB","kid":"ZikK8FpucQuZ2m2u4X-d1","x5t":"paKByF9VRCatZsui_3BR17d4GX4","x5c":["MIIDDTCCAfWgAwIBAgIJNJoDgDIfenFqMA0GCSqGSIb3DQEBCwUAMCQxIjAgBgNVBAMTGWRldi1jdmdtb3o1by51cy5hdXRoMC5jb20wHhcNMjEwNTE2MTkyODEwWhcNMzUwMTIzMTkyODEwWjAkMSIwIAYDVQQDExlkZXYtY3ZnbW96NW8udXMuYXV0aDAuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApfB4y4mNn9juKq16+HkViBXKSPi4ewQRkL0EJe7fCCmkCxiJa0cedU+HUYVUIOxMRNzAuzQASj4CAFhceX6Az9AYOlUtBzw5OQlzQr+Mn1HMygQNxMnykVfd5wWNzyrCUmhqaWmUWcsEXC4Xb03NZsh0wajIJAhbw9cXhRlFTaMa6y0cgqNXa/+YoefMi0c3QHiMuNDx6gbKk3oJYGmMbHBZAAMxJ8FdPD6ZsfmLbX+niOFWHs5SP6bKQcVDSigOZJV4n/CU5lP9FEQh4XULJ6M8K/m44Va3Llal6X4b8Gjkaa081jvBxZCG/FM3qS8kgHupd9+grZhHrBGmLiwmlQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBRdYJsrhhY5mYLcjOu2iyex2rpizzAOBgNVHQ8BAf8EBAMCAoQwDQYJKoZIhvcNAQELBQADggEBAD2SlXcyiP3EmOYUlUuELN4Y6VuKoDIjuQmdziQhTfujq/270qK0dZDkY/c/6z3lPJltYssTvVMBgebUIpXRVJRed+tyfDc4o6xs9JpmJ2n8CnpY7/H7UuuBYfim5vl3HG8/JBnF97R6l1dTrxs91vXGcwi0M0Kg5nLm+/Zja88wxPSsikFEokREQRfqtSNoG2JeFNKJ3SEqbAhlpLAhSjgWGS2FanfZkctzANcxOlq7tR0xPqLpq1w6NSItlNiQPW3H3Fb/ibfYoUcWR21PgEC95KfHHVyzgGQwnX0+g0WxSZInDuA4zrUxpfh6BZVni8nqB1ktY4W9vECchuoqw7A="]}]}'
+  recorded_at: Fri, 28 May 2021 22:53:02 GMT
+recorded_with: VCR 6.0.0

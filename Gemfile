@@ -18,6 +18,7 @@ gem 'puma', '~> 4.1'
 gem 'active_model_serializers', '~> 0.10.12'
 gem 'faker', '~> 2.17'
 gem 'devise', '~> 4.8'
+gem 'devise-jwt'
 gem 'jwt'
 
 # Use Active Storage variant
@@ -34,6 +35,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem 'factory_bot_rails', '~> 6.1'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do

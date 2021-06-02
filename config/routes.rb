@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      devise_for :users
+      devise_for :users, defaults: { format: :json }
       #for the love of god clean this up
 
       resources :movies do

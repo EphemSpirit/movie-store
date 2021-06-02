@@ -268,6 +268,11 @@ Devise.setup do |config|
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
 
+  # jwt secret init
+  config.jwt do |jwt|
+    jwt.secret = Rails.application.credentials[:devisejwt][:secret]
+  end
+
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
