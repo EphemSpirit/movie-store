@@ -19,9 +19,13 @@ RSpec.describe "Comments", type: :request do
       sign_in :user
       headers = { "AUTHORIZATION" => "#{Rails.application.credentials.dig(:auth0, :token)}"}
       VCR.use_cassette("fetch_comment") do
-        get "/api/v1/comments/#{comment.id}", params: {}, headers: headers
+        #request.headers["Authorization"] = Rails.application.credentials.dig(:auth0, :token)
+        get "/api/v1/comments/#{comment.id}", params: {}, headers: headers.to_json
         p response.body
         p response.headers #not authorization header here, response is 401 not authenticated
+        json = JSON.parse(response.body)
+        expect(response).to have_http_status(200)
+        expect(json.length).to eq(1)
       end
     end
 
