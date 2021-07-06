@@ -7,6 +7,8 @@ class Movie < ApplicationRecord
   has_many :comments, as: :commentable
   has_many :likes, as: :likable
 
-  scope :best_films, -> { Movie.where("rating > ?", 9.0)
+  scope :best_films, -> { where("rating > ?", "9.0")
                                .order(rating: :desc) }
+  scope :horror, -> { where("genre = ?", "Horror") }
+  scope :comedy, -> { where("genre = ?", "Comedy") }
 end
