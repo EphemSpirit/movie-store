@@ -7,8 +7,14 @@ class Movie < ApplicationRecord
   has_many :comments, as: :commentable
   has_many :likes, as: :likable
 
+  FANTASY = %w[Fable, Fantasy, Legend, Mythology, Folklore]
+  ADVENTURE = ['Science fiction', 'Crime/Detective', 'Tall tale', 'Western']
+  EDUCATIONAL = ['Speech', 'Narrative nonfiction', 'Realistic fiction', 'Reference book', 'Mythology', 'Textbook']
+
   scope :best_films, -> { where("rating > ?", "9.0")
                                .order(rating: :desc) }
-  scope :horror, -> { where("genre = ?", "Horror") }
-  scope :comedy, -> { where("genre = ?", "Comedy") }
+  scope :recent_films, -> { where("release_date < ?", 5.years.ago) }
+  scope :fantasy, -> { where(genre: FANTASY) }
+  scope :adventure, -> { where(genre: ADVENTURE) }
+  scope :educational, -> { where(genre: EDUCATIONAL) }
 end
