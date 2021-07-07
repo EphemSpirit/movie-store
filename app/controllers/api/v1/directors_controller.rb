@@ -1,5 +1,6 @@
 class Api::V1::DirectorsController < ApplicationController
   before_action :find_director, only: %i[show destroy]
+  before_action :authorize_request, except: %i[index]
 
   def index
     @directors = Director.all.includes(:movies)

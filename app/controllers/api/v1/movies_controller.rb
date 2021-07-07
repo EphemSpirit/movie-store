@@ -1,5 +1,6 @@
 class Api::V1::MoviesController < ApplicationController
   before_action :find_movie, only: %i[show edit update destroy]
+  before_action :authorize_request, except: %i[index show]
 
   def index
     movies = Movie.all.includes(:director, :cast_members)
@@ -39,7 +40,8 @@ class Api::V1::MoviesController < ApplicationController
   end
 
   def top_movies
-    @top_movies = Movie.all.order(rating: :desc).limit(10)
+    #@top_movies = Movie.all.order(rating: :desc).limit(10)
+    @top_movies = Movie.best_films
     render json: @top_movies
   end
 

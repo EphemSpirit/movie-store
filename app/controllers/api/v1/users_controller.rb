@@ -2,10 +2,10 @@ class Api::V1::UsersController < ApplicationController
   before_action :authenticate_api_v1_user!, only: [:show]
   #before_action :authorize_request
 
-  def index
-    @users = User.all
-    render json: @users, status: :ok
-  end
+  # def index
+  #   @users = User.all
+  #   render json: @users, status: :ok
+  # end
 
   def show
     warden.authenticate!(:api_token)

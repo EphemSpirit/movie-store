@@ -1,5 +1,6 @@
 class Api::V1::CastMembersController < ApplicationController
   before_action :find_cast_member, only: %i[show edit update destroy]
+  before_action :authorize_request, except: %i[index show]
 
   def index
     @cast_members = CastMember.all.includes(:movies)

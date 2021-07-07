@@ -12,7 +12,8 @@ class Movie < ApplicationRecord
   EDUCATIONAL = ['Speech', 'Narrative nonfiction', 'Realistic fiction', 'Reference book', 'Mythology', 'Textbook']
 
   scope :best_films, -> { where("rating > ?", "9.0")
-                               .order(rating: :desc) }
+                               .order(rating: :desc)
+                               .limit(10) }
   scope :recent_films, -> { where("release_date < ?", 5.years.ago) }
   scope :fantasy, -> { where(genre: FANTASY) }
   scope :adventure, -> { where(genre: ADVENTURE) }

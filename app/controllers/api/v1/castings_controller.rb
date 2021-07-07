@@ -1,4 +1,5 @@
 class Api::V1::CastingsController < ApplicationController
+  before_action :authorize_request
 
   def new
   end
