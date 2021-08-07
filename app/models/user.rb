@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :comments
   has_many :likes
+  has_one :wishlist
+  has_many :selected_movies, through: :wishlist, class_name: "Movie", source: :movie
 end
