@@ -7,7 +7,7 @@ class Movie < ApplicationRecord
   has_many :comments, as: :commentable
   has_many :likes, as: :likable
   belongs_to :wishlist
-  has_many :viewers, through: :wishlist, class_name: "User", source: :user
+  #has_many :viewers, through: :wishlist, class_name: "User", source: :user
 
   FANTASY = %w[Fable, Fantasy, Legend, Mythology, Folklore]
   ADVENTURE = ['Science fiction', 'Crime/Detective', 'Tall tale', 'Western']

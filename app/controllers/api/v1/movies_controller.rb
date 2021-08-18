@@ -45,6 +45,11 @@ class Api::V1::MoviesController < ApplicationController
     render json: @top_movies
   end
 
+  def add_to_watchlist(movie)
+    current_user.selected_movies << movie
+    @watchlist = current_user.selected_movies
+  end
+
   private
 
     def find_movie
