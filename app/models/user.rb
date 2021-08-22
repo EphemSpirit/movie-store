@@ -6,10 +6,9 @@ class User < ApplicationRecord
 
   after_create :make_wishlist
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :likes
-  has_one :wishlist
-  #has_many :selected_movies, through: :wishlist, class_name: "Movie", source: :movie
+  has_one :wishlist, dependent: :destroy
 
   def make_wishlist
     Wishlist.create(user_id: self.id)

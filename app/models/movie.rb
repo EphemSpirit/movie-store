@@ -4,10 +4,9 @@ class Movie < ApplicationRecord
   belongs_to :director, foreign_key: :director_id
   has_many :castings
   has_many :cast_members, through: :castings
-  has_many :comments, as: :commentable
-  has_many :likes, as: :likable
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :likes, as: :likable, dependent: :destroy
   belongs_to :wishlist
-  #has_many :viewers, through: :wishlist, class_name: "User", source: :user
 
   FANTASY = %w[Fable, Fantasy, Legend, Mythology, Folklore]
   ADVENTURE = ['Science fiction', 'Crime/Detective', 'Tall tale', 'Western']

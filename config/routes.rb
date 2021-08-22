@@ -5,6 +5,10 @@ Rails.application.routes.draw do
       devise_for :users, defaults: { format: :json }
       #for the love of god clean this up
 
+      resources :users do
+        resource :wishlist
+      end
+
       resources :movies do
         resources :comments, module: :movies, only: %i[create]
       end
@@ -19,6 +23,7 @@ Rails.application.routes.draw do
 
       get 'users', to: 'users#index'
       get 'user/:id', to: 'users#show'
+      post 'add_movie', to: 'wishlists#add_movie'
 
       get 'top_movies', to: 'movies#top_movies'
       get 'top_directors', to: 'directors#top_directors'

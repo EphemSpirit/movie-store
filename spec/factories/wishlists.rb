@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :wishlist do
-    user_id { 1 }
+    user factory: :user
     movie_id { 1 }
   end
 end
