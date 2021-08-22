@@ -7,7 +7,7 @@ FactoryBot.define do
     password_confirmation { "password" }
     trait :with_watchlist do
       after(:create) do |user|
-        user.wishlist << create(:movie)
+        user.wishlist.movies << create(:movie)
       end
     end
   end

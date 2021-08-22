@@ -1,9 +1,10 @@
 class Api::V1::WishlistsController < ApplicationController
   before_action :find_wishlist, only: %i[show, add_movie, destroy]
+  before_action :authenticate_api_v1_user!
 
   def add_movie
-    @wishlist.movies << movie.id
-    render json: @wishlist, status: :ok
+    current_api_v1_user.wishlist.movies << movie.id
+    render json: current_api_v1_user.wishlist, status: :ok
   end
 
   def remove_movie(movie)
@@ -22,7 +23,7 @@ class Api::V1::WishlistsController < ApplicationController
   end
 
   def show
-    render json: @wishlist
+    render json: current_api_v1_user.wishlist
   end
 
   def update
@@ -44,8 +45,8 @@ class Api::V1::WishlistsController < ApplicationController
       params.require(:wishlist).permit(:user_id, movie_ids: [])
     end
 
-    def find_wishlist
-      @wishlist = Wishlist.find(params[:id])
-    end
+    # def find_wishlist
+    #   @wishlist = Wishlist.find(params[:id])
+    # end
 
 end
