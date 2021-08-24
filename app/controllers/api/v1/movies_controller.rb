@@ -1,6 +1,7 @@
 class Api::V1::MoviesController < ApplicationController
   before_action :find_movie, only: %i[show edit update destroy]
-  before_action :authorize_request, except: %i[index show add_movie]
+  before_action :authorize_request, except: %i[index show add_movie remove_movie]
+  before_action :authorize_api_v1_user!, only: %[add_movie remove_movie]
 
   def index
     movies = Movie.all.includes(:director, :cast_members)
@@ -40,13 +41,24 @@ class Api::V1::MoviesController < ApplicationController
   end
 
   def top_movies
-    #@top_movies = Movie.all.order(rating: :desc).limit(10)
     @top_movies = Movie.best_films
     render json: @top_movies
   end
 
   def add_movie
-    render json: current_api_v1_user.wishlist
+    movie = Movie.find(params[:movie_id])
+    current_api_v1_user.wishlist.movies << movie
+    render json: current_api_v1_user.wishlist, status: :ok
+  end
+
+  def remove_movie
+    #movie = Movie.find(params[:movie_id])
+    #user.wishlist.movies = user.wishlist.movies.reject{ |x| x.id == params[:movie_id] }
+    if current_api_v1_user.wishlist.to_a.delete_if{ |x| x.id == params[:movie_id] }
+      render json: current_api_v1_user.wishlist, status: :ok
+    else
+      render json: { message: "Something went wrong", status: :unprocessable_entity }
+    end
   end
 
   private

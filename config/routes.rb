@@ -21,9 +21,11 @@ Rails.application.routes.draw do
       resources :cast_members
       resources :castings, only: %i[new create destroy]
 
+      post '/users/:user_id/add_movie/:movie_id', to: 'movies#add_movie'
+      delete '/users/:user_id/remove_movie/:movie_id', to: 'movies#remove_movie'
+
       get 'users', to: 'users#index'
       get 'user/:id', to: 'users#show'
-      post 'add_movie', to: 'movies#add_movie'
 
       get 'top_movies', to: 'movies#top_movies'
       get 'top_directors', to: 'directors#top_directors'
