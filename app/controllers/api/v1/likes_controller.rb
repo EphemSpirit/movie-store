@@ -3,8 +3,8 @@ class Api::V1::LikesController < ApplicationController
   before_action :authorize_request
 
   def create
-    @likeable.likes.new(like_params)
-    @likable.save
+    @like = @likeable.likes.new(like_params)
+    @like.save
     render json: @likable, status: :ok, message: "Like posted successfully"
   end
 

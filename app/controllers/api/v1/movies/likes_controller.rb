@@ -4,7 +4,7 @@ class Api::V1::Movies::LikesController < Api::V1::LikesController
   private
 
     def set_likable
-      @likable = Movie.find(params[:movie_id])
+      @likeable = Movie.find(params[:movie_id])
     end
 
 end

@@ -3,20 +3,19 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       devise_for :users, defaults: { format: :json }
-      #for the love of god clean this up
 
       resources :users do
         resource :wishlist
       end
 
       resources :movies do
-        resources :comments, module: :movies, only: %i[create]
-        resources :likes, module: :movies, only: [:create]
+        resources :comments, module: :movies, only: %i[create destroy]
+        resources :likes, module: :movies, only: %i[create destroy]
       end
 
       resources :comments, only: [:index, :show, :destroy] do
-        resources :comments, module: :comments, only: [:create]
-        resources :likes, module: :comments, only: [:create]
+        resources :comments, module: :comments, only: [:create, :destroy]
+        resources :likes, module: :comments, only: [:create, :destroy]
       end
 
       resources :directors, except: %i[edit update]
