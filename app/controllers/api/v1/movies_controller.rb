@@ -54,7 +54,8 @@ class Api::V1::MoviesController < ApplicationController
   def remove_movie
     #movie = Movie.find(params[:movie_id])
     #user.wishlist.movies = user.wishlist.movies.reject{ |x| x.id == params[:movie_id] }
-    if current_api_v1_user.wishlist.to_a.delete_if{ |x| x.id == params[:movie_id] }
+    if current_api_v1_user.wishlist.movies.include?(Movie.find(params[:movie_id]))
+      current_api_v1_user.wishlist.movies = user.wishlist.movies.reject{ |x| x.id == params[:movie_id] }
       render json: current_api_v1_user.wishlist, status: :ok
     else
       render json: { message: "Something went wrong", status: :unprocessable_entity }

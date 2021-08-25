@@ -23,7 +23,7 @@ RSpec.describe 'Wishlist', type: :request do
       sign_in other_user
       p other_user.wishlist.movies
       delete "/api/v1/users/#{other_user.id}/remove_movie/#{movie.id}"
-      p request.params
+      p request.params #movie_id passed through params is one greater than the id of the move int he watchlist???
       expect(response).to have_http_status(200)
       p other_user.wishlist.movies
     end
