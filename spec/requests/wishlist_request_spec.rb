@@ -4,7 +4,7 @@ RSpec.describe 'Wishlist', type: :request do
   describe 'Wishlist paths' do
 
     let!(:user) { create(:user, :with_watchlist) }
-    let!(:other_user) { create(:user, :with_watchlist) }
+    let!(:other_user) { create(:user) }
     let(:movie) { create(:movie) }
 
     it 'shows a user\'s wishlist' do
@@ -21,11 +21,9 @@ RSpec.describe 'Wishlist', type: :request do
 
     it 'removes a movie from the watchlist' do
       sign_in other_user
-      p other_user.wishlist.movies
+      other_user.wishlist.movies << movie
       delete "/api/v1/users/#{other_user.id}/remove_movie/#{movie.id}"
-      p request.params #movie_id passed through params is one greater than the id of the move int he watchlist???
-      expect(response).to have_http_status(200)
-      p other_user.wishlist.movies
+      expect(response).to have_http_status(204)
     end
   end
 end
