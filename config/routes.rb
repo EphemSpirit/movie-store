@@ -11,10 +11,12 @@ Rails.application.routes.draw do
 
       resources :movies do
         resources :comments, module: :movies, only: %i[create]
+        resources :likes, module: :movies, only: [:create]
       end
 
       resources :comments, only: [:index, :show, :destroy] do
         resources :comments, module: :comments, only: [:create]
+        resources :likes, module: :comments, only: [:create]
       end
 
       resources :directors, except: %i[edit update]
